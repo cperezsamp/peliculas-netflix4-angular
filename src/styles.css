@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: Lato;
+    src: url("./assets/fonts/Lato/Lato-Regular.ttf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Lato;
+    src: url("./assets/fonts/Lato/Lato-Thin.ttf") format("opentype");
+    font-weight: 100;
+    font-style: thin;
+}
+
+@font-face {
+    font-family: Lato;
+    src: url("./assets/fonts/Lato/Lato-Light.ttf") format("opentype");
+    font-weight: 300;
+    font-style: light;
+}
+
+@font-face {
+    font-family: Lato;
+    src: url("./assets/fonts/Lato/Lato-Bold.ttf") format("opentype");
+    font-weight: 700;
+    font-style: bold;
+}
+
+.body {
+    background-color: black;
+    color: white;
+    font-family: Lato;
+    font-style: normal;
+    padding: 30px;
+}
+
+.form-group {
+    color: white;
+}

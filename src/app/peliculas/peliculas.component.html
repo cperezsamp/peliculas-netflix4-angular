@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row">
+        <section class="wrapper col-3">
+            <div class="search-box">
+                <app-buscador></app-buscador>
+            </div>
+        </section>
+        <div class="col-9">
+                <div  *ngFor=" let pelicula of peliculas" >
+                    <div class="img-box row">
+                        <div class="float-left col-5" >
+                            <img class="img-pelicula" src={{pelicula.image}} alt="Pelicula 1 image">
+                        </div>
+                        
+                        <div class="desc-box col-7">
+                        <h1>{{pelicula.titulo}} <span class="anyo">({{pelicula.anyo}})</span></h1>
+                        <p>Acción, Drama - {{pelicula.duracionHoras}}h {{pelicula.duracionMinutos}}m </p>
+                        <h3 class="overview">Overview</h3>
+                        <p class="argumento">{{pelicula.argumento}}</p>
+                        </div>
+                    </div>            
+                    <section class="cast-row">
+                        <h3>Cast</h3>
+                        <div *ngFor="let actor of actores" class="app-actors-list" >
+                            <app-actors  [findActor]="actor"></app-actors>
+                        </div>
+                    </section>
+                    <section>
+                        <button class="btn btn-primary" (click)="changeAgregarActor(pelicula.titulo)">Agregar Actor</button>
+                      
+                        <!--Formulario agregacion nuevo actor / personaje -->
+                        <div  class="new-actors-form" >
+                            <form class="form row" #RegisterForm="ngForm" *ngIf="agregarActor" class="img-box row">
+                                <hr>
+                                <section class="col">
+                                <h2>Datos Actor</h2>
+                                <div class="form-group">
+                                    <label> Nombre Actor:</label><br/>
+                                    <input type="text" [(ngModel)]="newNombre" name="newNombre">
+                                </div>
+                                <div class="form-group">
+                                    <label >Clip</label><br/>
+                                    <input type="file" [(ngModel)]="newClip" (change)="prepareClip($event)" name="newClip">
+                                </div>
+                                <div class="form-group">
+                                    <label >Edad</label><br/>
+                                    <input type="number" [(ngModel)]="newEdad" name="newEdad">
+                                </div>
+                                <div class="form-group">
+                                    <label >Imagen</label><br/>
+                                    <input type="file"[(ngModel)]="newImagenActor" name="newImagenActor" (change)="previewFile($event)">
+                                </div>
+                                <div class="form-group">
+                                    <label >Nacionalidad</label><br/>
+                                    <input type="text" [(ngModel)]="newNacionalidad" name="newNacionalidad">
+                                </div>  
+                                <div class="form-group">
+                                    <label >Vivo</label><br/>
+                                    <input type="radio" id="vivo" [(ngModel)]="newVivo" name="newVivo" value=true>
+                                        <label for="vivo">verdadero</label><br>
+                                    <input type="radio" id="fallecido" [(ngModel)]="newVivo" name="newVivo" value=false>
+                                        <label for="fallecido">falso</label><br>
+                                </div>   
+                                </section>
+                                <!--<section class="col">
+                                    <h2>Datos Personaje</h2>
+                                    <div class="form-group">
+                                        <label >Nombre Personaje</label><br/>
+                                        <input type="text" [(ngModel)]="newNombrePersonaje" name="newNombrePersonaje">
+                                    </div> 
+                                    <div class="form-group">
+                                        <label >Descripción</label><br/>
+                                        <input type="text" [(ngModel)]="newDescripcion" name="newDescripcion">
+                                    </div>
+                                </section>-->  
+
+                                <section class="col">
+                                    <button class="btn btn-primary" (click)="addActor(RegisterForm.value, pelicula)">Guardar</button>
+                                    <button class="btn btn-secondary" (click)="changeAgregarActor(pelicula.titulo)">Cancelar</button>
+                                </section>
+                            </form>
+                            </div>
+                            </section>
+                                            
+                            <br><hr>
+                </div>
+
+        </div>
+</div>
+</div>

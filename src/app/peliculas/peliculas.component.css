@@ -1,0 +1,47 @@
+.anyo {
+    font-weight: 100;
+}
+
+.argumento {
+    font-weight: 300;
+}
+
+.img-pelicula {
+    border-radius: 3%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.desc-box {
+    margin-top: 35px;
+}
+
+.overview {
+    margin-top: 50px;
+}
+
+.cast-row {
+    margin-top: 40px;
+}
+
+
+.app-actors-list {
+    display: inline-flex;
+}
+
+.img-personaje {
+    border-radius: 0%;
+    object-fit: cover;
+    height: 250px;
+}
+
+button {
+    width: 120px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.new-actors-form {
+    margin: 40px 0px 20px 0px;
+}
+

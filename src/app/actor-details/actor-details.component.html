@@ -1,0 +1,62 @@
+<div class="container row">
+  <div class="col-5">
+    <img class="actor-img"
+      src="{{ actor.imagen }}"
+      alt="{{ actor.nombre }} image"
+    />
+    <!--<button class="btn btn-primary" (click)="editarActor()">Editar detalles</button>-->
+  </div>
+  <div class="desc-box col-7">
+      <h2>Nombre: {{ actor.nombre }}</h2>
+      <p *ngIf="!actor.vivo; esle elseBlock">
+        Edad: {{ actor.edad }} (fallecido)
+      </p>
+      <ng-template #elseBlock>Edad: {{ actor.edad }}</ng-template>
+      <p>Nacionalidad: {{ actor.nacionalidad }}</p>
+      <p>¿Está vivo? {{ actor.vivo  }}</p>
+
+      <button class="btn btn-secondary" (click)="toggleEditMode()">Editar</button>
+      <app-player [actorId]="actorId"></app-player>
+
+  </div>
+</div>
+
+
+ <!-- Modal para editar detalles del actor -->
+
+<div *ngIf="isEditMode" class="" tabindex="-1" role="dialog" id="editarActorModal">
+  <h5 class="modal-title">Editar detalles del actor</h5>
+
+  <form>
+          <div class="form-group">
+            <label >Nombre</label>
+            <input type="text" placeholder="{{actor.nombre}}" class="form-control" [(ngModel)]="nombreForm" name="nombreForm" >
+          </div>
+          <div class="form-group">
+            <label>Edad</label>
+            <input type="number" placeholder="{{actor.edad}}"  class="form-control" [(ngModel)]="edadForm" name="edadForm">
+          </div>
+          <div class="form-group">
+            <label for="nacionalidadForm">Nacionalidad</label>
+            <input type="text" placeholder="{{actor.nacionalidad}}" class="form-control" [(ngModel)]="nacionalidadForm" name="nacionalidadForm">
+          </div>
+          <div class="form-group">
+            <label for="imagen">URL de la imagen</label>
+            <input type="text" placeholder="{{actor.imagen}}" [(ngModel)]="imagenForm" name="imagenForm" >
+          </div>
+          <div class="form-group">
+            <label >Clip</label><br/>
+            <input type="file" [(ngModel)]="clipForm" (change)="prepareClip($event)" name="clipForm">
+        </div>
+         <div class="form-group">
+            <p> ¿Está vivo? </p>
+            <input type="radio" id="vivo" [(ngModel)]="vivoForm" name="vivoForm" value=true checked="{{actor.vivo}}">                              
+            <label> Verdadero </label><br/>
+
+            <input type="radio" id="vivo" [(ngModel)]="vivoForm" name="vivoForm" value=false checked="{{!actor.vivo}}"> 
+            <label>falso</label><br>
+
+          </div>   
+          <button class="btn btn-primary" (click)="saveActorDetails()">Guardar</button>
+        </form>
+</div>

@@ -1,0 +1,14 @@
+<div class="container text-center" #divVideo>
+    <video  *ngIf="isVideoLoaded == true" width="520" height="300" controls autoplay id="player">
+        <input type="button" value="play" id="playBtn" />
+        <input type="button" value="pause" id="pauseBtn" />
+        <input type="button" value="stop" id="stopBtn" />
+        <source src="{{ video }}" type="video/mp4">
+        <button onclick="playPause()">Reproducir/Pausar</button>
+    </video>
+    <button onclick="reload()">Recargar</button>
+    <button onclick="makeLarge()">Maximizar</button>
+    <button onclick="makeSmall()">Minimizar</button>
+    <button onclick="makeNormal()">Normal</button>
+    
+</div>

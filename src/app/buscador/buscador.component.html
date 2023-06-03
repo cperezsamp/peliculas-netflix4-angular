@@ -1,0 +1,20 @@
+<form>
+    <input type="text" placeholder="Buscar actor" [(ngModel)]="nombreActor" name="nombreActor" (keyup)="onWrite()" />
+    <button ><img  src={{icon}} height="20pt" width="20pt" (click)="changeDesplegable()" ></button>
+    <div *ngIf="desplegable">
+        <label>Edad minima</label>
+        <input type="number"  [(ngModel)]="edadMinima" name="edadMinima">
+        <label>Edad maxima</label>
+        <input type="number" [(ngModel)]="edadMaxima" name="edadMaxima">
+        <label>Nacionalidad</label>
+        <input type="text" placeholder="britanica"  [(ngModel)]="nacionalidad" name="nacionalidad" >
+        <!--<button (click)="onSubmit()">Filtrar</button>-->
+
+    </div>
+    <div *ngIf="write">
+        <div *ngFor="let actor of actores | buscador:nombreActor:edadMinima:edadMaxima:nacionalidad">
+            <a href="/actor/{{ actor.id }}">{{actor.nombre}}</a>
+        </div>
+    </div>
+    
+</form>
